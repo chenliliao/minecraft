@@ -22,6 +22,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="无预览录像"/>
+            <Button
+                android:id="@+id/btn_audio_convert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="音频转码ffmpeg"/>
 
         </LinearLayout>
     </ScrollView>

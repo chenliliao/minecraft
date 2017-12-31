@@ -76,6 +76,7 @@ public class CameraUtils {
             mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
             mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
             mRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+            mRecorder.setAudioChannels(2);
 //            mRecorder.setMaxDuration(10000);  // recording max time
             mRecorder.setVideoSize(640, 480);
             mRecorder.setVideoFrameRate(15);
