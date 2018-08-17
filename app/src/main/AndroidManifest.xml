@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
+    // android:allowBackup="true"应用数据能否被备份
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,9 +21,7 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".RecorderActivity">
-
-        </activity>
+        <activity android:name=".RecorderActivity"></activity>
     </application>
 
 </manifest>

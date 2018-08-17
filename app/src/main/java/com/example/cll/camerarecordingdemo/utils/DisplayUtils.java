@@ -1,6 +1,8 @@
-package com.example.cll.camerarecordingdemo;
+package com.example.cll.camerarecordingdemo.utils;
 
 import android.hardware.Camera;
+
+import com.example.cll.camerarecordingdemo.SizeData;
 
 import java.util.ArrayList;
 

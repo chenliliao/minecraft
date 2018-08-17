@@ -28,6 +28,18 @@
                 android:layout_height="wrap_content"
                 android:text="音频转码ffmpeg"/>
 
+            <Button
+                android:id="@+id/btn_audio_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="录音"/>
+
+            <Button
+                android:id="@+id/btn_video_record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="视频"/>
+
         </LinearLayout>
     </ScrollView>
 

@@ -6,8 +6,6 @@ import android.hardware.Camera;
 import android.media.MediaRecorder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
@@ -21,6 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.cll.camerarecordingdemo.constant.RecorderType;
+import com.example.cll.camerarecordingdemo.utils.CameraUtils;
+import com.example.cll.camerarecordingdemo.utils.DisplayUtils;
 
 import java.util.ArrayList;
 
@@ -56,6 +56,13 @@ public class RecorderActivity extends AppCompatActivity {
         mHolder = mSurfaceView.getHolder();
         mHolder.addCallback(callback);
 
+//        FrameLayout.LayoutParams linearParams =(FrameLayout.LayoutParams) mSurfaceView.getLayoutParams();
+//        linearParams.height = linearParams.width;
+//        linearParams.width = linearParams.height;
+//        RotateAnimation rotateAnimation = new RotateAnimation(0f,90f, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5F);
+//        rotateAnimation.setFillAfter(true);
+//        mSurfaceView.setLayoutParams(linearParams);
+//        mSurfaceView.startAnimation(rotateAnimation);
     }
 
     private Camera mCamera;
@@ -64,6 +71,9 @@ public class RecorderActivity extends AppCompatActivity {
         findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                mCamera.setDisplayOrientation(180);
+//                mCamera.startPreview();
                 mRecorder = CameraUtils.startRecording(mCamera,RecorderActivity.this);
 
             }
@@ -89,7 +99,7 @@ public class RecorderActivity extends AppCompatActivity {
                 listView = (ListView) view.findViewById(R.id.listview);
                 ArrayList<SizeData> data = new ArrayList<>();
 
-                DataAdapter adapters = new DataAdapter(RecorderActivity.this,DisplayUtils.getResolution(mCamera,data));
+                DataAdapter adapters = new DataAdapter(RecorderActivity.this, DisplayUtils.getResolution(mCamera,data));
                 listView.setAdapter(adapters);
                 dialog.setContentView(view);
                 Window dialogWindow = dialog.getWindow();

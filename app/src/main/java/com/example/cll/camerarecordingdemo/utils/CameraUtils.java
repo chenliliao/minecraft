@@ -1,8 +1,9 @@
-package com.example.cll.camerarecordingdemo;
+package com.example.cll.camerarecordingdemo.utils;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
@@ -41,7 +42,9 @@ public class CameraUtils {
             Camera.Parameters parameter = mCamera.getParameters();
             parameter.setPreviewSize(size.width,size.height);
             parameter.setPictureSize(size.width,size.height);
+            Log.w("tag", "test recorderType = " + size.width +"   "+ size.height);
             parameter.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+            parameter.setPreviewFormat(ImageFormat.NV21);
             mCamera.setParameters(parameter);
 
             Log.w("tag", "test recorderType = " + recorderType);
@@ -50,6 +53,8 @@ public class CameraUtils {
             }else if (TextUtils.equals(recorderType, RecorderType.NO_PREVIEW.getValue())){
                 SurfaceTexture surface = new SurfaceTexture(0);
                 mCamera.setPreviewTexture(surface);
+//                surface.updateTexImage(); // update onPreviewFrame
+//                mCamera.setPreviewCallback(sPreviewCallback);
             }
 
         } catch (IOException e) {
@@ -58,6 +63,13 @@ public class CameraUtils {
         }
         return mCamera;
     }
+
+    private static Camera.PreviewCallback sPreviewCallback = new Camera.PreviewCallback() {
+        @Override
+        public void onPreviewFrame(byte[] data, Camera camera) {
+            Log.w("TAG","test onPreviewFrame  data = "+data.length);
+        }
+    };
 
     private static String name = "VIDEO_"+System.currentTimeMillis()+".mp4";
     private static String dir = "minecraft";
@@ -78,7 +90,7 @@ public class CameraUtils {
             mRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
             mRecorder.setAudioChannels(2);
 //            mRecorder.setMaxDuration(10000);  // recording max time
-            mRecorder.setVideoSize(640, 480);
+            mRecorder.setVideoSize(1920, 1080);
             mRecorder.setVideoFrameRate(15);
             mRecorder.setVideoEncodingBitRate(640 * 480 * 15 / 3); //width * height * frameRate
             mRecorder.setOutputFile(path);
